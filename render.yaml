@@ -1,0 +1,16 @@
+# Render Blueprint: deploys Plant Finder as a free Static Site.
+# Static sites on Render are served from a CDN and never go to sleep,
+# so no keep-alive ping is needed.
+services:
+  - type: web
+    name: plant-finder
+    runtime: static
+    buildCommand: echo "No build step needed"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: no-referrer

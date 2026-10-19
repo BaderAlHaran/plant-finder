@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>كاشف النباتات</title>
+  <meta name="description" content="صوّر أي نبتة واعرف اسمها وطريقة العناية بها ومواعيد سقيها. يعمل بالكامل داخل متصفحك – لا يتم رفع أو حفظ أي صورة.">
+  <meta name="theme-color" content="#2f7d4a">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="نباتاتي">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>🌿 كاشف النباتات</h1>
+      <p class="sub">صوّري النبتة أو ارفعي صورتها، وستعرفين اسمها، وكم مرة تسقينها، وكيف تعتنين بها.</p>
+      <p class="privacy">🔒 كل شيء يعمل داخل الجهاز. الصورة لا تُرفع ولا تُحفظ أبدًا.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card upload" id="dropZone">
+      <div class="preview" id="preview" hidden>
+        <img id="previewImg" alt="صورة النبتة">
+      </div>
+      <div class="upload-body" id="uploadBody">
+        <div class="big-icon">📷</div>
+        <p><strong>صوّري النبتة</strong> أو اختاري صورة من الجهاز</p>
+        <div class="btns">
+          <label class="btn primary">
+            📸 التقاط صورة
+            <input type="file" accept="image/*" capture="environment" id="cameraInput" hidden>
+          </label>
+          <label class="btn">
+            🖼️ اختيار صورة
+            <input type="file" accept="image/*" id="fileInput" hidden>
+          </label>
+        </div>
+        <p class="hint">نصيحة: قرّبي الكاميرا من الأوراق، وصوّري في مكان فيه إضاءة جيدة.</p>
+      </div>
+      <div class="status" id="status" hidden>
+        <div class="spinner"></div>
+        <span id="statusText">جارٍ التحميل…</span>
+        <div class="bar" id="progressBar" hidden><span id="progressFill"></span></div>
+      </div>
+    </section>
+
+    <section id="results" hidden>
+      <div class="card" id="matchCard">
+        <h2>أقرب النتائج</h2>
+        <div class="note" id="matchNote"></div>
+        <ul class="matches" id="matches"></ul>
+        <button class="btn small" id="againBtn">🔄 تجربة صورة أخرى</button>
+      </div>
+    </section>
+
+    <section id="care" hidden></section>
+
+    <section class="card browse">
+      <h2>كل النباتات</h2>
+      <p class="note">النتيجة غير صحيحة؟ ابحثي عن النبتة بنفسك في الدليل.</p>
+      <input type="search" id="search" placeholder="ابحثي مثلًا: صبار، ريحان، نعناع…" autocomplete="off">
+      <div class="chips" id="chips"></div>
+      <ul class="plant-list" id="plantList"></ul>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>التعرّف على النبات يتم بنموذج ذكاء اصطناعي مفتوح المصدر يعمل داخل الجهاز. النتيجة تقديرية – تأكدي دائمًا، خاصة قبل أكل أي نبات أو إذا كانت هناك حيوانات أليفة قد تقضمه.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
